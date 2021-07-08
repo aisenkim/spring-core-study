@@ -3,14 +3,14 @@ package hello.core.discount;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 
-public class FixDiscountPolicy implements DiscountPolicy {
+public class RateDiscountPolicy implements DiscountPolicy {
 
-    private final int discountFixedAmount = 1000; // 1000 won
+    private int discountPercent = 10;
 
     @Override
     public int discount(Member member, int price) {
         if (member.getGrade() == Grade.VIP) {
-            return discountFixedAmount;
+            return price * discountPercent / 100;
         } else {
             return 0;
         }
